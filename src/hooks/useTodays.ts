@@ -74,6 +74,13 @@ export function useTodays(dayString: string): [
   return [todays, addGuess, randomAngle, imageScale];
 }
 
+function shuffle(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 function getCountry(dayString: string) {
   const currentDayDate = DateTime.fromFormat(dayString, "yyyy-MM-dd");
   let pickingDate = DateTime.fromFormat("2022-03-21", "yyyy-MM-dd");
@@ -97,7 +104,7 @@ function getCountry(dayString: string) {
       smallCountryCooldown < 0
         ? countriesWithImage
         : bigEnoughCountriesWithImage;
-
+    shuffle(countrySelection);
     pickedCountry =
       forcedCountry ??
       countrySelection[

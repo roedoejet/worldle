@@ -113,6 +113,13 @@ function App({
             <button
               className="ml-3 text-xl"
               type="button"
+              onClick={() => localStorage.clear()}
+            >
+              <Twemoji text="🧙‍♂️" />
+            </button>
+            <button
+              className="ml-3 text-xl"
+              type="button"
               onClick={() => setStatsOpen(true)}
             >
               <Twemoji text="📈" />
